@@ -10,6 +10,8 @@ from tensorflow.python.keras.layers import Dense, Dropout
 from tensorflow.python.keras.optimizer_v2.gradient_descent import SGD
 from nltk.stem import WordNetLemmatizer
 
+import smartHistory
+
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 
 import nltk
@@ -51,6 +53,7 @@ class VioletBot(IAssistant):
         self.model_name = model_name
         self.mood = "neutral"
         self.original_message = ""
+        self.history = smartHistory.SmartHistory(10, model_name)
 
         if intents.endswith(".json"):
             self.load_json_intents(intents)
@@ -135,13 +138,13 @@ class VioletBot(IAssistant):
             self.model = load_model(f'sources/{model_name}/model.h5')
 
     def _clean_up_sentence(self, sentence):
-        self.original_message = sentence
         sentence_words = nltk.word_tokenize(sentence)
         sentence_words = [self.lemmatizer.lemmatize(word.lower()) for word in sentence_words]
         return sentence_words
 
     def _bag_of_words(self, sentence, words):
         sentence_words = self._clean_up_sentence(sentence)
+        self.history.put(('user', sentence_words, sentence))
         bag = [0] * len(words)
         for s in sentence_words:
             for i, word in enumerate(words):
@@ -150,6 +153,8 @@ class VioletBot(IAssistant):
         return np.array(bag)
 
     def _predict_class(self, sentence):
+        self.original_message = sentence
+
         p = self._bag_of_words(sentence, self.words)
         res = self.model.predict(np.array([p]))[0]
         ERROR_THRESHOLD = 0.5
@@ -184,6 +189,7 @@ class VioletBot(IAssistant):
                         break
         except IndexError:
                 result = "I don't understand!"
+        self.history.put(('bot', result))
         return result
 
     def request_tag(self, message):

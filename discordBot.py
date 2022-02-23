@@ -75,14 +75,14 @@ async def on_message(message):
         else:
             # SENDS BACK A MESSAGE TO THE CHANNEL.
             result = violet.request(message.content)
-            if result is not "":
+            if result != "":
                 await message.channel.send(result)
 
 
 # EXECUTES THE BOT WITH THE SPECIFIED TOKEN.
 if __name__ == '__main__':
     violet = VioletBot('sources/dev/intents.json', model_name="dev")
-    violet.train_model()
-    violet.save_model()
+    # violet.train_model()
+    # violet.save_model()
     violet.load_model()
     bot.run(DISCORD_TOKEN)

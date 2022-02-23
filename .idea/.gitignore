@@ -9,3 +9,6 @@
 
 #settings with BOT token
 /sources/settings.json
+
+#history of messages
+*/history.json
