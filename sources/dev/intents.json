@@ -30,13 +30,28 @@
     ]
   },
   {
+    "tag": "response_to_question",
+    "patterns": [
+      "good",
+      "nice"
+    ],
+    "neutral_responses": [
+      "What do you want to talk about?",
+      "Is there something you want to talk about?",
+      ""
+    ],
+    "angry_responses": [
+      "I don't care"
+    ]
+  },
+  {
     "tag": "how_are_you",
     "patterns": [
+      "Are you alive?",
       "How are you",
-      "how are you?",
       "How are you?",
       "are you alive",
-      "Are you alive?"
+      "how are you?"
     ],
     "neutral_responses": [
       "I'm doing good",

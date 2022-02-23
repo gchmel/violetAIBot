@@ -75,7 +75,8 @@ async def on_message(message):
         else:
             # SENDS BACK A MESSAGE TO THE CHANNEL.
             result = violet.request(message.content)
-            await message.channel.send(result)
+            if result is not "":
+                await message.channel.send(result)
 
 
 # EXECUTES THE BOT WITH THE SPECIFIED TOKEN.
