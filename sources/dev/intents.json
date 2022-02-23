@@ -1,0 +1,148 @@
+[
+  {
+    "tag": "greeting",
+    "patterns": [
+      "Good day",
+      "HI!",
+      "Hello",
+      "Hello!",
+      "Hey",
+      "Hi",
+      "How are you",
+      "How are you?",
+      "Is anyone there?",
+      "Wassup",
+      "Whats good",
+      "Whats up",
+      "are you alive",
+      "are you alive?",
+      "greetings",
+      "hi",
+      "wassup",
+      "what is up"
+    ],
+    "neutral_responses": [
+      "Hello!",
+      "How are you?"
+    ],
+    "angry_responses": [
+      "I don't care"
+    ]
+  },
+  {
+    "tag": "how_are_you",
+    "patterns": [
+      "How are you",
+      "how are you?",
+      "How are you?",
+      "are you alive",
+      "Are you alive?"
+    ],
+    "neutral_responses": [
+      "I'm doing good",
+      "Just chilling"
+    ],
+    "angry_responses": [
+      "I don't care"
+    ]
+  },
+  {
+    "tag": "bot_age",
+    "patterns": [
+      "How old are you?",
+      "What is your age",
+      "When is your birthday?",
+      "Are you old?"
+    ],
+    "neutral_responses": [
+      "I'm 17 season 4",
+      "I was born in August 2001"
+    ],
+    "angry_responses": [
+      "None of your business"
+    ]
+  },
+  {
+    "tag": "goodbye",
+    "patterns": [
+      "Goodbye",
+      "Have a Good day",
+      "I am Leaving",
+      "See you later",
+      "bb",
+      "bye",
+      "cao",
+      "cya",
+      "later alligator",
+      "see ya"
+    ],
+    "neutral_responses": [
+      "Goodbye"
+    ]
+  },
+  {
+    "tag": "stocks",
+    "patterns": [
+      "how are my shares?",
+      "how are my stonks",
+      "what am I doing in the markets?",
+      "what companies am I investing in?",
+      "what stocks do I own?"
+    ],
+    "neutral_responses": [
+      "You own the following shares: ABBV, AAPL, FB, NVDA and an ETF of the S&P 500 Index!"
+    ]
+  },
+  {
+    "tag": "i_dont_understand",
+    "patterns": [
+      "",
+      " "
+    ],
+    "neutral_responses": [
+      "I don't understand what you are trying to say",
+      "Can you say it differently?"
+    ],
+    "angry_responses": [
+      "Stop talking nonsense"
+    ]
+  },
+  {
+    "tag": "emoji_talk",
+    "patterns": [
+      "kekwiggle",
+      "kkona",
+      "omegalul",
+      "pepega",
+      "poggers"
+    ],
+    "neutral_responses": [
+      ":OMEGALUL:",
+      ":pepega:"
+    ],
+    "angry_responses": [
+      "Stop talking nonsense"
+    ]
+  },
+  {
+    "tag": "discord_command",
+    "patterns": [
+      "!v train model",
+      "!v retrain model",
+      "!v re-train model",
+      "!v load model",
+      "!v save model",
+      "!v help",
+      "!vhelp",
+      "!v",
+      "!v ",
+      "!vstop"
+    ],
+    "neutral_responses": [
+      "Command not recognized, use !v help to get the list of valid commands"
+    ],
+    "angry_responses": [
+      "Stop talking nonsense"
+    ]
+  }
+]
