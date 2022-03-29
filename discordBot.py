@@ -74,7 +74,7 @@ async def on_message(message):
                                            "if you believe this is an error!")
         else:
             # SENDS BACK A MESSAGE TO THE CHANNEL.
-            result = violet.request(message.content)
+            result = violet.request(message.author.name, message.content)
             if result != "":
                 await message.channel.send(result)
 

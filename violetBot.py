@@ -11,6 +11,7 @@ from tensorflow.python.keras.optimizer_v2.gradient_descent import SGD
 from nltk.stem import WordNetLemmatizer
 
 import smartHistory
+from mood import Mood
 
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 
@@ -20,6 +21,7 @@ from tensorflow.python.keras.models import load_model
 
 nltk.download('punkt', quiet=True)
 nltk.download('wordnet', quiet=True)
+
 
 class IAssistant(metaclass=ABCMeta):
 
@@ -51,7 +53,7 @@ class VioletBot(IAssistant):
         self.intents_file = intents
         self.intent_methods = intent_methods
         self.model_name = model_name
-        self.mood = "neutral"
+        self.mood = dict()
         self.original_message = ""
         self.history = smartHistory.SmartHistory(10, model_name)
 
@@ -83,8 +85,6 @@ class VioletBot(IAssistant):
 
         self.classes = sorted(list(set(self.classes)))
 
-
-
         training = []
         output_empty = [0] * len(self.classes)
 
@@ -107,6 +107,8 @@ class VioletBot(IAssistant):
 
         self.model = Sequential()
         self.model.add(Dense(128, input_shape=(len(train_x[0]),), activation='relu'))
+        self.model.add(Dropout(0.5))
+        self.model.add(Dense(64, activation='relu'))
         self.model.add(Dropout(0.5))
         self.model.add(Dense(64, activation='relu'))
         self.model.add(Dropout(0.5))
@@ -144,7 +146,6 @@ class VioletBot(IAssistant):
 
     def _bag_of_words(self, sentence, words):
         sentence_words = self._clean_up_sentence(sentence)
-        self.history.put(('user', sentence_words, sentence))
         bag = [0] * len(words)
         for s in sentence_words:
             for i, word in enumerate(words):
@@ -166,31 +167,43 @@ class VioletBot(IAssistant):
             return_list.append({'intent': self.classes[r[0]], 'probability': str(r[1])})
         return return_list
 
-    def _get_response(self, ints, intents_json, message):
+    def _get_response(self, author,  ints, intents_json, message):
         try:
             tag = ints[0]['intent']
+            if tag == "i_dont_understand":
+                return self.learn_from_new_type(intents_json, message)
             list_of_intents = intents_json
             for i in list_of_intents:
                 if i['tag'] == tag:
-                     if self.mood == "neutral":
-                        result = random.choice(i['neutral_responses'])
-                     break
-            with open(f'sources/{self.model_name}/intents.json', 'r+') as f:
-                data = json.load(f)
-                for j in data:
-                    if j['tag'] == tag:
-                        dictionary = j['patterns']
-                        dictionary.append(message)
-                        dictionary = sorted(list(set(dictionary)))
-                        j['patterns'] = dictionary
-                        f.seek(0)
-                        json.dump(data, f, indent=2)
-                        f.truncate()
-                        break
+                    if self.mood.get(author) is None:
+                        self.mood[author] = Mood(self.model_name, author)
+                    self.mood.get(author).update_mood(i["x_change"], i["y_change"])
+                    mood = self.mood.get(author).get_mood()
+                    choice = mood + "_responses"
+                    result = random.choice(i[choice])
+                    break
+            self.learn_new_input(message, tag)
         except IndexError:
-                result = "I don't understand!"
+            result = "I don't understand!"
         self.history.put(('bot', result))
         return result
+
+    def learn_new_input(self, message, tag):
+        with open(f'sources/{self.model_name}/intents.json', 'r+') as f:
+            data = json.load(f)
+            for j in data:
+                if j['tag'] == tag:
+                    dictionary = j['patterns']
+                    dictionary.append(message)
+                    dictionary = sorted(list(set(dictionary)))
+                    j['patterns'] = dictionary
+                    f.seek(0)
+                    json.dump(data, f, indent=2)
+                    f.truncate()
+                    break
+
+    def learn_from_new_type(self, intents_json, message):
+        pass
 
     def request_tag(self, message):
         pass
@@ -201,11 +214,15 @@ class VioletBot(IAssistant):
     def request_method(self, message):
         pass
 
-    def request(self, message):
+    def request(self, author, message):
+        self._store_message(author, message)
         ints = self._predict_class(message)
 
         if ints[0]['intent'] in self.intent_methods.keys():
             self.intent_methods[ints[0]['intent']]()
             return "wtf is this"
         else:
-            return self._get_response(ints, self.intents, self.original_message)
+            return self._get_response(author, ints, self.intents, self.original_message)
+
+    def _store_message(self, username, message):
+        self.history.put((username, message))
