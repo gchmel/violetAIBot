@@ -1,7 +1,7 @@
 # IMPORT DISCORD.PY. ALLOWS ACCESS TO DISCORD'S API.
 import json
 
-import discord
+import discord 
 
 # Import the os module.
 import os
@@ -12,8 +12,8 @@ from violetBot import VioletBot
 # GETS THE CLIENT OBJECT FROM DISCORD.PY. CLIENT IS SYNONYMOUS WITH BOT.
 bot = discord.Client()
 bot_name = "Violet Bot"
-DISCORD_TOKEN = json.loads(open("sources/settings.json").read())['DISCORD_TOKEN']
-bot_admins = ["EɢᴏʀPʟᴀʏ1™"]
+DISCORD_TOKEN = json.loads(open("./sources/settings.json").read())['DISCORD_TOKEN']
+bot_admins = ["EɢᴏʀPʟᴀʏ1™", "WHATISLOVE"]
 
 # EVENT LISTENER FOR WHEN THE BOT HAS SWITCHED FROM OFFLINE TO ONLINE.
 @bot.event
@@ -81,7 +81,7 @@ async def on_message(message):
 
 # EXECUTES THE BOT WITH THE SPECIFIED TOKEN.
 if __name__ == '__main__':
-    violet = VioletBot('sources/dev/intents.json', model_name="dev")
+    violet = VioletBot('./sources/dev/intents.json', model_name="dev")
     # violet.train_model()
     # violet.save_model()
     violet.load_model()

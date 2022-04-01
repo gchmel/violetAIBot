@@ -1,5 +1,37 @@
 [
   {
+    "tag": "i_dont_understand",
+    "x_change": 0,
+    "y_change": 0,
+    "patterns": [
+      "What is the capital of England?",
+      "",
+      " "
+    ],
+    "neutral_responses": [
+      "I don't understand what you are trying to say",
+      "Can you say it differently?"
+    ],
+    "sad_responses": [
+      ""
+    ],
+    "happy_responses": [
+      ""
+    ],
+    "depressed_responses": [
+      ""
+    ],
+    "angry_responses": [
+      ""
+    ],
+    "love_responses": [
+      ""
+    ],
+    "best_friends_responses": [
+      ""
+    ]
+  },
+  {
     "tag": "greeting",
     "x_change": 1,
     "y_change": 1,
@@ -28,8 +60,23 @@
       "Hello!",
       "How are you?"
     ],
+    "sad_responses": [
+      ""
+    ],
+    "happy_responses": [
+      ""
+    ],
+    "depressed_responses": [
+      ""
+    ],
     "angry_responses": [
-      "I don't care"
+      ""
+    ],
+    "love_responses": [
+      ""
+    ],
+    "best_friends_responses": [
+      ""
     ]
   },
   {
@@ -46,8 +93,23 @@
       "Is there something you want to talk about?",
       ""
     ],
+    "sad_responses": [
+      ""
+    ],
+    "happy_responses": [
+      ""
+    ],
+    "depressed_responses": [
+      ""
+    ],
     "angry_responses": [
-      "I don't care"
+      ""
+    ],
+    "love_responses": [
+      ""
+    ],
+    "best_friends_responses": [
+      ""
     ]
   },
   {
@@ -66,8 +128,23 @@
       "I'm doing good",
       "Just chilling"
     ],
+    "sad_responses": [
+      ""
+    ],
+    "happy_responses": [
+      ""
+    ],
+    "depressed_responses": [
+      ""
+    ],
     "angry_responses": [
-      "I don't care"
+      ""
+    ],
+    "love_responses": [
+      ""
+    ],
+    "best_friends_responses": [
+      ""
     ]
   },
   {
@@ -87,8 +164,23 @@
       "I'm 17 season 4",
       "I was born in August 2001"
     ],
+    "sad_responses": [
+      ""
+    ],
+    "happy_responses": [
+      ""
+    ],
+    "depressed_responses": [
+      ""
+    ],
     "angry_responses": [
-      "None of your business"
+      ""
+    ],
+    "love_responses": [
+      ""
+    ],
+    "best_friends_responses": [
+      ""
     ]
   },
   {
@@ -110,6 +202,24 @@
     ],
     "neutral_responses": [
       "Goodbye"
+    ],
+    "sad_responses": [
+      ""
+    ],
+    "happy_responses": [
+      ""
+    ],
+    "depressed_responses": [
+      ""
+    ],
+    "angry_responses": [
+      ""
+    ],
+    "love_responses": [
+      ""
+    ],
+    "best_friends_responses": [
+      ""
     ]
   },
   {
@@ -125,6 +235,24 @@
     ],
     "neutral_responses": [
       "You own the following shares: ABBV, AAPL, FB, NVDA and an ETF of the S&P 500 Index!"
+    ],
+    "sad_responses": [
+      ""
+    ],
+    "happy_responses": [
+      ""
+    ],
+    "depressed_responses": [
+      ""
+    ],
+    "angry_responses": [
+      ""
+    ],
+    "love_responses": [
+      ""
+    ],
+    "best_friends_responses": [
+      ""
     ]
   },
   {
@@ -140,22 +268,24 @@
       "I don't follow politics",
       "I'm not interested in politics",
       "I don't want to discuss politics"
-    ]
-  },
-  {
-    "tag": "i_dont_understand",
-    "x_change": 0,
-    "y_change": 0,
-    "patterns": [
-      "",
-      " "
     ],
-    "neutral_responses": [
-      "I don't understand what you are trying to say",
-      "Can you say it differently?"
+    "sad_responses": [
+      ""
+    ],
+    "happy_responses": [
+      ""
+    ],
+    "depressed_responses": [
+      ""
     ],
     "angry_responses": [
-      "Stop talking nonsense"
+      ""
+    ],
+    "love_responses": [
+      ""
+    ],
+    "best_friends_responses": [
+      ""
     ]
   },
   {
@@ -173,8 +303,23 @@
       ":OMEGALUL:",
       ":pepega:"
     ],
+    "sad_responses": [
+      ""
+    ],
+    "happy_responses": [
+      ""
+    ],
+    "depressed_responses": [
+      ""
+    ],
     "angry_responses": [
-      "Stop talking nonsense"
+      ""
+    ],
+    "love_responses": [
+      ""
+    ],
+    "best_friends_responses": [
+      ""
     ]
   },
   {
@@ -196,8 +341,110 @@
     "neutral_responses": [
       "Command not recognized, use !v help to get the list of valid commands"
     ],
+    "sad_responses": [
+      ""
+    ],
+    "happy_responses": [
+      ""
+    ],
+    "depressed_responses": [
+      ""
+    ],
     "angry_responses": [
-      "Stop talking nonsense"
+      ""
+    ],
+    "love_responses": [
+      ""
+    ],
+    "best_friends_responses": [
+      ""
+    ]
+  },
+  {
+    "tag": "capital_of_france",
+    "x_change": 0,
+    "y_change": 0,
+    "patterns": [
+      "What is the capital of France?"
+    ],
+    "neutral_responses": [
+      "The Capital of France is Paris"
+    ],
+    "sad_responses": [
+      ""
+    ],
+    "happy_responses": [
+      ""
+    ],
+    "depressed_responses": [
+      ""
+    ],
+    "angry_responses": [
+      ""
+    ],
+    "love_responses": [
+      ""
+    ],
+    "best_friends_responses": [
+      ""
+    ]
+  },
+  {
+    "tag": "What is the capital of England?",
+    "x_change": 0,
+    "y_change": 0,
+    "patterns": [
+      "What is the capital of England?"
+    ],
+    "neutral_responses": [
+      "The capital of England is London."
+    ],
+    "sad_responses": [
+      "The capital of England is London."
+    ],
+    "happy_responses": [
+      "The capital of England is London."
+    ],
+    "depressed_responses": [
+      "The capital of England is London."
+    ],
+    "angry_responses": [
+      "The capital of England is London."
+    ],
+    "love_responses": [
+      "The capital of England is London."
+    ],
+    "best_friends_responses": [
+      "The capital of England is London."
+    ]
+  },
+  {
+    "tag": "What is the capital of England?",
+    "x_change": 0,
+    "y_change": 0,
+    "patterns": [
+      "What is the capital of England?"
+    ],
+    "neutral_responses": [
+      "The capital of England is London."
+    ],
+    "sad_responses": [
+      "The capital of England is London."
+    ],
+    "happy_responses": [
+      "The capital of England is London."
+    ],
+    "depressed_responses": [
+      "The capital of England is London."
+    ],
+    "angry_responses": [
+      "The capital of England is London."
+    ],
+    "love_responses": [
+      "The capital of England is London."
+    ],
+    "best_friends_responses": [
+      "The capital of England is London."
     ]
   }
 ]

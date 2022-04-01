@@ -17,12 +17,12 @@ class Mood:
         self.y = 0
 
         try:
-            os.mkdir("sources/" + self.folder + "/mood/")
+            os.mkdir("./sources/" + self.folder + "/mood/")
         except FileExistsError:
             pass
 
-        if os.path.isfile("sources/" + self.folder + "/mood/" + self.username + "_mood.json"):
-            with open(f'sources/{self.folder}/mood/{self.username}_mood.json', 'r') as f:
+        if os.path.isfile("./sources/" + self.folder + "/mood/" + self.username + "_mood.json"):
+            with open(f'./sources/{self.folder}/mood/{self.username}_mood.json', 'r') as f:
                 file = json.load(f)
                 self.x_max = file["x_max"]
                 self.y_max = file["y_max"]
@@ -40,14 +40,14 @@ class Mood:
                 "x": self.x,
                 "y": self.y
             }
-            json.dump(data, open(f'sources/{self.folder}/mood/{self.username}_mood.json', 'w'), indent=2)
+            json.dump(data, open(f'./sources/{self.folder}/mood/{self.username}_mood.json', 'w'), indent=2)
 
     def save(self):
-        with open(f'sources/{self.folder}/mood/{self.username}_mood.json', 'r') as f:
+        with open(f'./sources/{self.folder}/mood/{self.username}_mood.json', 'r') as f:
             file = json.load(f)
             file["x"] = self.x
             file["y"] = self.y
-            json.dump(file, open(f'sources/{self.folder}/mood/{self.username}_mood.json', 'w'), indent=2)
+            json.dump(file, open(f'./sources/{self.folder}/mood/{self.username}_mood.json', 'w'), indent=2)
 
     def update_mood(self, x_change, y_change):
         self.x = self.x + x_change

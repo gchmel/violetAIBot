@@ -4,6 +4,7 @@ import random
 import json
 import pickle
 import os
+import openai
 
 from tensorflow.python.keras import Sequential
 from tensorflow.python.keras.layers import Dense, Dropout
@@ -21,6 +22,8 @@ from tensorflow.python.keras.models import load_model
 
 nltk.download('punkt', quiet=True)
 nltk.download('wordnet', quiet=True)
+
+OPEN_AI_API_TOKEN = json.loads(open("./sources/settings.json").read())['OPEN_AI_API_TOKEN']
 
 
 class IAssistant(metaclass=ABCMeta):
@@ -55,7 +58,7 @@ class VioletBot(IAssistant):
         self.model_name = model_name
         self.mood = dict()
         self.original_message = ""
-        self.history = smartHistory.SmartHistory(10, model_name)
+        self.history = smartHistory.SmartHistory(1000, model_name)
 
         if intents.endswith(".json"):
             self.load_json_intents(intents)
@@ -121,23 +124,23 @@ class VioletBot(IAssistant):
 
     def save_model(self, model_name=None):
         if model_name is None:
-            self.model.save(f"sources/{self.model_name}/model.h5", self.hist)
-            pickle.dump(self.words, open(f'sources/{self.model_name}/words.pkl', 'wb'))
-            pickle.dump(self.classes, open(f'sources/{self.model_name}/classes.pkl', 'wb'))
+            self.model.save(f"./sources/{self.model_name}/model.h5", self.hist)
+            pickle.dump(self.words, open(f'./sources/{self.model_name}/words.pkl', 'wb'))
+            pickle.dump(self.classes, open(f'./sources/{self.model_name}/classes.pkl', 'wb'))
         else:
-            self.model.save(f"sources/{model_name}/model.h5", self.hist)
-            pickle.dump(self.words, open(f'sources/{model_name}/words.pkl', 'wb'))
-            pickle.dump(self.classes, open(f'sources/{model_name}/classes.pkl', 'wb'))
+            self.model.save(f"./sources/{model_name}/model.h5", self.hist)
+            pickle.dump(self.words, open(f'./sources/{model_name}/words.pkl', 'wb'))
+            pickle.dump(self.classes, open(f'./sources/{model_name}/classes.pkl', 'wb'))
 
     def load_model(self, model_name=None):
         if model_name is None:
-            self.words = pickle.load(open(f'sources/{self.model_name}/words.pkl', 'rb'))
-            self.classes = pickle.load(open(f'sources/{self.model_name}/classes.pkl', 'rb'))
-            self.model = load_model(f'sources/{self.model_name}/model.h5')
+            self.words = pickle.load(open(f'./sources/{self.model_name}/words.pkl', 'rb'))
+            self.classes = pickle.load(open(f'./sources/{self.model_name}/classes.pkl', 'rb'))
+            self.model = load_model(f'./sources/{self.model_name}/model.h5')
         else:
-            self.words = pickle.load(open(f'sources/{model_name}/words.pkl', 'rb'))
-            self.classes = pickle.load(open(f'sources/{model_name}/classes.pkl', 'rb'))
-            self.model = load_model(f'sources/{model_name}/model.h5')
+            self.words = pickle.load(open(f'./sources/{model_name}/words.pkl', 'rb'))
+            self.classes = pickle.load(open(f'./sources/{model_name}/classes.pkl', 'rb'))
+            self.model = load_model(f'./sources/{model_name}/model.h5')
 
     def _clean_up_sentence(self, sentence):
         sentence_words = nltk.word_tokenize(sentence)
@@ -158,7 +161,7 @@ class VioletBot(IAssistant):
 
         p = self._bag_of_words(sentence, self.words)
         res = self.model.predict(np.array([p]))[0]
-        ERROR_THRESHOLD = 0.5
+        ERROR_THRESHOLD = 0.95
         results = [[i, r] for i, r in enumerate(res) if r > ERROR_THRESHOLD]
 
         results.sort(key=lambda x: x[1], reverse=True)
@@ -167,11 +170,11 @@ class VioletBot(IAssistant):
             return_list.append({'intent': self.classes[r[0]], 'probability': str(r[1])})
         return return_list
 
-    def _get_response(self, author,  ints, intents_json, message):
+    def _get_response(self, author, ints, intents_json, message):
         try:
             tag = ints[0]['intent']
             if tag == "i_dont_understand":
-                return self.learn_from_new_type(intents_json, message)
+                return self._learn_from_new_type(intents_json, message)
             list_of_intents = intents_json
             for i in list_of_intents:
                 if i['tag'] == tag:
@@ -189,7 +192,7 @@ class VioletBot(IAssistant):
         return result
 
     def learn_new_input(self, message, tag):
-        with open(f'sources/{self.model_name}/intents.json', 'r+') as f:
+        with open(f'./sources/{self.model_name}/intents.json', 'r+') as f:
             data = json.load(f)
             for j in data:
                 if j['tag'] == tag:
@@ -202,8 +205,52 @@ class VioletBot(IAssistant):
                     f.truncate()
                     break
 
-    def learn_from_new_type(self, intents_json, message):
-        pass
+    def _learn_from_new_type(self, intents_json, message):
+        openai.api_key = OPEN_AI_API_TOKEN
+        new_prompt = 'I am a highly intelligent question answering bot. If you ask me a question that is ' \
+                     'rooted in truth, I will give you the answer. If you ask me a question that is nonsense,' \
+                     ' trickery, or has no clear answer, I will respond with "Unknown".\n \n'
+        for prompt in self.history.get_all():
+            if prompt[0] == "bot":
+                new_prompt += "A:" + prompt[1] + "\n"
+            else:
+                new_prompt += "Q:" + prompt[1] + "\n"
+
+        new_prompt += "\nA:"
+
+        response = openai.Completion.create(
+            engine="text-davinci-002",
+            prompt=new_prompt,
+            temperature=0,
+            max_tokens=100,
+            top_p=1,
+            frequency_penalty=0.0,
+            presence_penalty=0.0,
+            stop=["\n"]
+        )
+
+        result = response['choices'][0]['text']
+
+        new_entry = {
+            "tag": message,
+            "x_change": 0,
+            "y_change": 0,
+            "patterns": [
+                message
+            ],
+            "neutral_responses": [result],
+            "sad_responses": [result],
+            "happy_responses": [result],
+            "depressed_responses": [result],
+            "angry_responses": [result],
+            "love_responses": [result],
+            "best_friends_responses": [result],
+        }
+
+        intents_json.append(new_entry)
+        self.history.put(("bot", result))
+        json.dump(intents_json, open(f'./sources/{self.model_name}/intents.json', 'r+'), indent=2)
+        return result
 
     def request_tag(self, message):
         pass
@@ -218,7 +265,9 @@ class VioletBot(IAssistant):
         self._store_message(author, message)
         ints = self._predict_class(message)
 
-        if ints[0]['intent'] in self.intent_methods.keys():
+        if len(ints) == 0:
+            return self._learn_from_new_type(self.intents, message)
+        elif ints[0]['intent'] in self.intent_methods.keys():
             self.intent_methods[ints[0]['intent']]()
             return "wtf is this"
         else:

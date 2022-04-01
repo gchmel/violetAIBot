@@ -12,8 +12,8 @@ class SmartHistory:
 
         self.size = 0
         self.folder = folder
-        if os.path.isfile("sources/" + folder + "/history.json"):
-            with open(f'sources/{self.folder}/history.json', 'r') as f:
+        if os.path.isfile("./sources/" + folder + "/history.json"):
+            with open(f'./sources/{self.folder}/history.json', 'r') as f:
                 file = json.load(f)
                 if (self.max_size == file['max_size']):
                     self.size = file['size']
@@ -25,7 +25,7 @@ class SmartHistory:
             file['max_size'] = self.max_size
             file['size'] = self.size
             file['history'] = self.history
-            json.dump(file, open(f'sources/{self.folder}/history.json', 'w'), indent=2)
+            json.dump(file, open(f'./sources/{self.folder}/history.json', 'w'), indent=2)
 
     def put(self, item):
         if self.size == self.max_size:
@@ -39,7 +39,7 @@ class SmartHistory:
             temp.extend(self.history)
             self.history = temp
             self.size = self.size + 1
-        with open(f'sources/{self.folder}/history.json', 'r+') as f:
+        with open(f'./sources/{self.folder}/history.json', 'r+') as f:
             file = json.load(f)
             file['size'] = self.size
             file['history'] = self.history
