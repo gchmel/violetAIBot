@@ -1,7 +1,12 @@
 # IMPORT DISCORD.PY. ALLOWS ACCESS TO DISCORD'S API.
+import io
 import json
+import math
+import sys
 
-import discord 
+import discord
+from datetime import datetime
+import time
 
 # Import the os module.
 import os
@@ -18,6 +23,7 @@ bot_admins = ["EɢᴏʀPʟᴀʏ1™", "WHATISLOVE"]
 # EVENT LISTENER FOR WHEN THE BOT HAS SWITCHED FROM OFFLINE TO ONLINE.
 @bot.event
 async def on_ready():
+    print("Starting Violet Bot at", datetime.now())
     # CREATES A COUNTER TO KEEP TRACK OF HOW MANY GUILDS / SERVERS THE BOT IS CONNECTED TO.
     guild_count = 0
 
@@ -32,13 +38,14 @@ async def on_ready():
     # PRINTS HOW MANY GUILDS / SERVERS THE BOT IS IN.
     activity = discord.Game(name="with users on " + str(guild_count) + " servers.", type=3)
     await bot.change_presence(status=discord.Status.idle, activity=activity)
-    print("Violet Bot is in " + str(guild_count) + " servers.")
+    print("Violet Bot is in " + str(guild_count) + " servers.\n")
 
 
 # EVENT LISTENER FOR WHEN A NEW MESSAGE IS SENT TO A CHANNEL.
 @bot.event
 async def on_message(message):
     if message.author.name != bot_name:
+        print(message.author, ' sent: "', message.content, '" at', datetime.now())
         if message.content[0] == '!' and message.content[1] == 'v':
             if bot_admins.__contains__(message.author.name):
                 if message.content == "!v train model":
@@ -74,15 +81,21 @@ async def on_message(message):
                                            "if you believe this is an error!")
         else:
             # SENDS BACK A MESSAGE TO THE CHANNEL.
+            start_time = time.time()
             result = violet.request(message.author.name, message.content)
             if result != "":
                 await message.channel.send(result)
+            print('Violet Bot#6492 sent: "', result, '" at', datetime.now(), "The response took ",
+                  math.ceil((time.time() - start_time) * 1000), "milliseconds to calculate")
 
 
 # EXECUTES THE BOT WITH THE SPECIFIED TOKEN.
 if __name__ == '__main__':
+    logfile = io.open('./log.txt', 'w', encoding='utf8')
+    sys.stdout = logfile
     violet = VioletBot('./sources/dev/intents.json', model_name="dev")
     # violet.train_model()
     # violet.save_model()
     violet.load_model()
     bot.run(DISCORD_TOKEN)
+    logfile.close()
