@@ -16,7 +16,7 @@ from violetBot import VioletBot
 
 # GETS THE CLIENT OBJECT FROM DISCORD.PY. CLIENT IS SYNONYMOUS WITH BOT.
 bot = discord.Client()
-bot_name = "Violet Bot"
+bot_name = "Violet"
 DISCORD_TOKEN = json.loads(open("./sources/settings.json").read())['DISCORD_TOKEN']
 bot_admins = ["EɢᴏʀPʟᴀʏ1™", "WHATISLOVE"]
 
@@ -91,11 +91,11 @@ async def on_message(message):
 
 # EXECUTES THE BOT WITH THE SPECIFIED TOKEN.
 if __name__ == '__main__':
-    logfile = io.open('./log.txt', 'w', encoding='utf8')
-    sys.stdout = logfile
+    #logfile = io.open('./log.txt', 'w', encoding='utf8')
+    #sys.stdout = logfile
     violet = VioletBot('./sources/dev/intents.json', model_name="dev")
-    # violet.train_model()
-    # violet.save_model()
+    violet.train_model()
+    violet.save_model()
     violet.load_model()
     bot.run(DISCORD_TOKEN)
-    logfile.close()
+    #logfile.close()

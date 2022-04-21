@@ -4,7 +4,9 @@
     "x_change": 0,
     "y_change": 0,
     "patterns": [
-      "What is the capital of England?",
+      "Violet, can u tell me a random fact?",
+      "V, oranges or apples?",
+      "V, tell me a random fact",
       "",
       " "
     ],
@@ -46,6 +48,7 @@
       "How are you?",
       "Is anyone there?",
       "Wassup",
+      "Wassup fellas!",
       "Whats good",
       "Whats up",
       "are you alive",
@@ -118,8 +121,11 @@
     "y_change": 0.5,
     "patterns": [
       "Are you alive?",
+      "Can you describe how your day was, V?",
       "How are you",
       "How are you?",
+      "How was your day, V ?",
+      "How was your day, V?",
       "are you alive",
       "how are you doing",
       "how are you?"
@@ -419,32 +425,32 @@
     ]
   },
   {
-    "tag": "What is the capital of England?",
+    "tag": "What is the capital of India?",
     "x_change": 0,
     "y_change": 0,
     "patterns": [
-      "What is the capital of England?"
+      "What is the capital of India?"
     ],
     "neutral_responses": [
-      "The capital of England is London."
+      " Delhi"
     ],
     "sad_responses": [
-      "The capital of England is London."
+      " Delhi"
     ],
     "happy_responses": [
-      "The capital of England is London."
+      " Delhi"
     ],
     "depressed_responses": [
-      "The capital of England is London."
+      " Delhi"
     ],
     "angry_responses": [
-      "The capital of England is London."
+      " Delhi"
     ],
     "love_responses": [
-      "The capital of England is London."
+      " Delhi"
     ],
     "best_friends_responses": [
-      "The capital of England is London."
+      " Delhi"
     ]
   }
 ]

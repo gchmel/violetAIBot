@@ -58,7 +58,7 @@ class VioletBot(IAssistant):
         self.model_name = model_name
         self.mood = dict()
         self.original_message = ""
-        self.history = smartHistory.SmartHistory(1000, model_name)
+        self.history = smartHistory.SmartHistory(10, model_name)
 
         if intents.endswith(".json"):
             self.load_json_intents(intents)
@@ -210,8 +210,14 @@ class VioletBot(IAssistant):
         new_prompt = 'I am a highly intelligent question answering bot. If you ask me a question that is ' \
                      'rooted in truth, I will give you the answer. If you ask me a question that is nonsense,' \
                      ' trickery, or has no clear answer, I will respond with "Unknown".\n \n'
-        for prompt in self.history.get_all():
-            if prompt[0] == "bot":
+        history = self.history.get_all()
+        history.reverse()
+        for i, prompt in enumerate(history):
+            if i >= 15:
+                break
+            elif isinstance(prompt, int):
+                break
+            elif prompt[0] == "bot":
                 new_prompt += "A:" + prompt[1] + "\n"
             else:
                 new_prompt += "Q:" + prompt[1] + "\n"
