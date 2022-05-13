@@ -1,12 +1,7 @@
 [
   {
     "tag": "i_dont_understand",
-    "x_change": 0,
-    "y_change": 0,
     "patterns": [
-      "Violet, can u tell me a random fact?",
-      "V, oranges or apples?",
-      "V, tell me a random fact",
       "",
       " "
     ],
@@ -39,6 +34,7 @@
     "y_change": 1,
     "patterns": [
       "Good day",
+      "violet?",
       "HI!",
       "Hello",
       "Hello!",
@@ -54,71 +50,103 @@
       "are you alive",
       "are you alive?",
       "greetings",
+      "hello, vi!",
       "hi",
       "hi again",
       "wassup",
-      "what is up"
+      "what is up",
+      "Sup, violet!"
     ],
     "neutral_responses": [
       "Hello!",
-      "How are you?"
+      "How are you?",
+      "Sup"
     ],
     "sad_responses": [
-      ""
+      "Hello!",
+      "How are you?",
+      "Sup"
     ],
     "happy_responses": [
-      ""
+      "Hello!",
+      "How are you?",
+      "Sup"
     ],
     "depressed_responses": [
-      ""
+      "Hello!",
+      "How are you?",
+      "Sup"
     ],
     "angry_responses": [
-      ""
+      "Hello!",
+      "How are you?",
+      "Sup"
     ],
     "love_responses": [
-      ""
+      "Hello!",
+      "How are you?",
+      "Sup"
     ],
     "best_friends_responses": [
-      ""
+      "Hello!",
+      "How are you?",
+      "Sup"
     ]
   },
   {
     "tag": "response_to_question",
-    "x_change": 1,
-    "y_change": 0.5,
     "patterns": [
       "good",
       "nice",
-      "cool"
+      "cool",
+      "Good",
+      "sure"
     ],
     "neutral_responses": [
       "What do you want to talk about?",
       "Is there something you want to talk about?",
-      ""
+      "",
+      "I'm glad to hear that!"
     ],
     "sad_responses": [
-      ""
+      "What do you want to talk about?",
+      "Is there something you want to talk about?",
+      "",
+      "I'm glad to hear that!"
     ],
     "happy_responses": [
-      ""
+      "What do you want to talk about?",
+      "Is there something you want to talk about?",
+      "",
+      "I'm glad to hear that!"
     ],
     "depressed_responses": [
-      ""
+      "What do you want to talk about?",
+      "Is there something you want to talk about?",
+      "",
+      "I'm glad to hear that!"
     ],
     "angry_responses": [
-      ""
+      "What do you want to talk about?",
+      "Is there something you want to talk about?",
+      "",
+      "I'm glad to hear that!"
     ],
     "love_responses": [
-      ""
+      "What do you want to talk about?",
+      "Is there something you want to talk about?",
+      "",
+      "I'm glad to hear that!"
     ],
     "best_friends_responses": [
-      ""
+      "What do you want to talk about?",
+      "Is there something you want to talk about?",
+      "",
+      "I'm glad to hear that!"
     ]
   },
   {
     "tag": "how_are_you",
-    "x_change": 1,
-    "y_change": 0.5,
     "patterns": [
       "Are you alive?",
       "Can you describe how your day was, V?",
@@ -155,8 +183,6 @@
   },
   {
     "tag": "bot_age",
-    "x_change": -0.5,
-    "y_change": -1,
     "patterns": [
       "Are you old?",
       "How old are you?",
@@ -191,8 +217,6 @@
   },
   {
     "tag": "goodbye",
-    "x_change": 0.1,
-    "y_change": 0.1,
     "patterns": [
       "Goodbye",
       "Have a Good day",
@@ -230,8 +254,6 @@
   },
   {
     "tag": "stocks",
-    "x_change": -1,
-    "y_change": 1,
     "patterns": [
       "how are my shares?",
       "how are my stonks",
@@ -263,8 +285,6 @@
   },
   {
     "tag": "politics",
-    "x_change": -10,
-    "y_change": 5,
     "patterns": [
       "What do you think about donald trump",
       "do you know donald trump?",
@@ -296,14 +316,13 @@
   },
   {
     "tag": "emoji_talk",
-    "x_change": 1,
-    "y_change": 1,
     "patterns": [
       "kekwiggle",
       "kkona",
       "omegalul",
       "pepega",
-      "poggers"
+      "poggers",
+      "ez"
     ],
     "neutral_responses": [
       ":OMEGALUL:",
@@ -329,47 +348,7 @@
     ]
   },
   {
-    "tag": "discord_command",
-    "x_change": 0,
-    "y_change": 0,
-    "patterns": [
-      "!v",
-      "!v ",
-      "!v help",
-      "!v load model",
-      "!v re-train model",
-      "!v retrain model",
-      "!v save model",
-      "!v train model",
-      "!vhelp",
-      "!vstop"
-    ],
-    "neutral_responses": [
-      "Command not recognized, use !v help to get the list of valid commands"
-    ],
-    "sad_responses": [
-      ""
-    ],
-    "happy_responses": [
-      ""
-    ],
-    "depressed_responses": [
-      ""
-    ],
-    "angry_responses": [
-      ""
-    ],
-    "love_responses": [
-      ""
-    ],
-    "best_friends_responses": [
-      ""
-    ]
-  },
-  {
     "tag": "capital_of_france",
-    "x_change": 0,
-    "y_change": 0,
     "patterns": [
       "What is the capital of France?"
     ],
@@ -397,8 +376,6 @@
   },
   {
     "tag": "What is the capital of England?",
-    "x_change": 0,
-    "y_change": 0,
     "patterns": [
       "What is the capital of England?"
     ],
@@ -426,8 +403,6 @@
   },
   {
     "tag": "What is the capital of India?",
-    "x_change": 0,
-    "y_change": 0,
     "patterns": [
       "What is the capital of India?"
     ],
@@ -451,6 +426,121 @@
     ],
     "best_friends_responses": [
       " Delhi"
+    ]
+  },
+  {
+    "tag": "What is the Capital of Russia?",
+    "patterns": [
+      "What is the Capital of Russia?"
+    ],
+    "neutral_responses": [
+      " Moscow"
+    ],
+    "sad_responses": [
+      " Moscow"
+    ],
+    "happy_responses": [
+      " Moscow"
+    ],
+    "depressed_responses": [
+      " Moscow"
+    ],
+    "angry_responses": [
+      " Moscow"
+    ],
+    "love_responses": [
+      " Moscow"
+    ],
+    "best_friends_responses": [
+      " Moscow"
+    ]
+  },
+  {
+    "tag": "Fine, you?",
+    "patterns": [
+      "Fine, you?"
+    ],
+    "neutral_responses": [
+      "Good",
+      "Just chilling"
+    ],
+    "sad_responses": [
+      "Good",
+      "Just chilling"
+    ],
+    "happy_responses": [
+      "Good",
+      "Just chilling"
+    ],
+    "depressed_responses": [
+      "Good",
+      "Just chilling"
+    ],
+    "angry_responses": [
+      "Good",
+      "Just chilling"
+    ],
+    "love_responses": [
+      "Good",
+      "Just chilling"
+    ],
+    "best_friends_responses": [
+      "Good",
+      "Just chilling"
+    ]
+  },
+  {
+    "tag": "ask_a_fact_about_bot",
+    "patterns": [
+      "anything new in life?"
+    ],
+    "neutral_responses": [
+      " Unknown"
+    ],
+    "sad_responses": [
+      " Unknown"
+    ],
+    "happy_responses": [
+      " Unknown"
+    ],
+    "depressed_responses": [
+      " Unknown"
+    ],
+    "angry_responses": [
+      " Unknown"
+    ],
+    "love_responses": [
+      " Unknown"
+    ],
+    "best_friends_responses": [
+      " Unknown"
+    ]
+  },
+  {
+    "tag": "bot detected",
+    "patterns": [
+      "bot detected"
+    ],
+    "neutral_responses": [
+      " Unknown"
+    ],
+    "sad_responses": [
+      " Unknown"
+    ],
+    "happy_responses": [
+      " Unknown"
+    ],
+    "depressed_responses": [
+      " Unknown"
+    ],
+    "angry_responses": [
+      " Unknown"
+    ],
+    "love_responses": [
+      " Unknown"
+    ],
+    "best_friends_responses": [
+      " Unknown"
     ]
   }
 ]

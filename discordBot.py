@@ -18,12 +18,12 @@ from violetBot import VioletBot
 bot = discord.Client()
 bot_name = "Violet"
 DISCORD_TOKEN = json.loads(open("./sources/settings.json").read())['DISCORD_TOKEN']
-bot_admins = ["EɢᴏʀPʟᴀʏ1™", "WHATISLOVE"]
+bot_admins = ["EɢᴏʀPʟᴀʏ1™", "WHATISLOVE", "EgorPlay1"]
 
 # EVENT LISTENER FOR WHEN THE BOT HAS SWITCHED FROM OFFLINE TO ONLINE.
 @bot.event
 async def on_ready():
-    print("Starting Violet Bot at", datetime.now())
+    print("[DEBUG]: Starting Violet Bot at", datetime.now())
     # CREATES A COUNTER TO KEEP TRACK OF HOW MANY GUILDS / SERVERS THE BOT IS CONNECTED TO.
     guild_count = 0
 
@@ -38,14 +38,14 @@ async def on_ready():
     # PRINTS HOW MANY GUILDS / SERVERS THE BOT IS IN.
     activity = discord.Game(name="with users on " + str(guild_count) + " servers.", type=3)
     await bot.change_presence(status=discord.Status.idle, activity=activity)
-    print("Violet Bot is in " + str(guild_count) + " servers.\n")
+    print("[DEBUG]: Violet Bot is in " + str(guild_count) + " servers.\n")
 
 
 # EVENT LISTENER FOR WHEN A NEW MESSAGE IS SENT TO A CHANNEL.
 @bot.event
 async def on_message(message):
     if message.author.name != bot_name:
-        print(message.author, ' sent: "', message.content, '" at', datetime.now())
+        print("[DEBUG]:", message.author, ' sent: "', message.content, '" at', datetime.now())
         if message.content[0] == '!' and message.content[1] == 'v':
             if bot_admins.__contains__(message.author.name):
                 if message.content == "!v train model":
@@ -74,28 +74,30 @@ async def on_message(message):
                     await message.channel.send("going to bed")
                     exit()
                 else:
-                    result = violet.request(message.content)
-                    await message.channel.send(result)
+                    await message.channel.send("Command not recognized, use !v help to get the list of valid commands")
             else:
                 await message.channel.send("You are not an admin to use internal commands, contact @EɢᴏʀPʟᴀʏ1™#5700 "
                                            "if you believe this is an error!")
         else:
             # SENDS BACK A MESSAGE TO THE CHANNEL.
-            start_time = time.time()
+            start_time = time.perf_counter()
             result = violet.request(message.author.name, message.content)
-            if result != "":
+            if result == "" or result == " Unknown":
+                result = '[*ERROR*]: ' + 'bot probably encountered an error, the resulting message is: " ' + result \
+                         + ' "'
                 await message.channel.send(result)
-            print('Violet Bot#6492 sent: "', result, '" at', datetime.now(), "The response took ",
-                  math.ceil((time.time() - start_time) * 1000), "milliseconds to calculate")
+            else:
+                await message.channel.send(result)
+            print('[DEBUG]: Violet Bot#6492 sent: "', result, '" at', datetime.now(), "The response took ",
+                  math.ceil((time.perf_counter() - start_time) * 1000), "milliseconds to calculate")
 
 
 # EXECUTES THE BOT WITH THE SPECIFIED TOKEN.
 if __name__ == '__main__':
-    #logfile = io.open('./log.txt', 'w', encoding='utf8')
-    #sys.stdout = logfile
+    #with open('./log.txt', 'w', encoding='utf8') as logfile:
+        #sys.stdout = logfile
     violet = VioletBot('./sources/dev/intents.json', model_name="dev")
     violet.train_model()
     violet.save_model()
     violet.load_model()
     bot.run(DISCORD_TOKEN)
-    #logfile.close()

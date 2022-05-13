@@ -4,43 +4,43 @@
   "history": [
     [
       "bot",
-      " Delhi"
-    ],
-    [
-      "E\u0262\u1d0f\u0280P\u029f\u1d00\u028f1\u2122",
-      "What is the capital of India?"
-    ],
-    [
-      "E\u0262\u1d0f\u0280P\u029f\u1d00\u028f1\u2122",
-      "What is the capital of India?"
+      " Unknown"
     ],
     [
       "bot",
-      "Hello!"
+      " Unknown"
     ],
     [
-      "E\u0262\u1d0f\u0280P\u029f\u1d00\u028f1\u2122",
-      "hi"
-    ],
-    [
-      "E\u0262\u1d0f\u0280P\u029f\u1d00\u028f1\u2122",
-      "What is the capital of India?"
+      "WHATISLOVE",
+      "Hello, Vi!"
     ],
     [
       "bot",
-      "Hello!"
+      "Command not recognized, use !v help to get the list of valid commands"
     ],
     [
-      "E\u0262\u1d0f\u0280P\u029f\u1d00\u028f1\u2122",
-      "hi"
+      "WHATISLOVE",
+      "Hello, v!"
     ],
     [
-      "E\u0262\u1d0f\u0280P\u029f\u1d00\u028f1\u2122",
-      "What is the Capital of Russia?"
+      "WHATISLOVE",
+      "Vi, tell me a joke"
     ],
     [
-      "Akemi",
-      "\u041f\u043e\u0437\u0434\u0440\u0430\u0432\u0438\u043c <@215767035555217409> \u0441 2 \u0443\u0440\u043e\u0432\u043d\u0435\u043c."
+      "bot",
+      "I'm glad to hear that!"
+    ],
+    [
+      "WHATISLOVE",
+      "Hi, V!"
+    ],
+    [
+      "bot",
+      "How are you?"
+    ],
+    [
+      "WHATISLOVE",
+      "good, how was your day"
     ]
   ]
 }

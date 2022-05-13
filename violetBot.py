@@ -1,3 +1,6 @@
+import math
+from datetime import datetime
+import time
 from abc import ABCMeta, abstractmethod
 
 import random
@@ -19,6 +22,7 @@ os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 import nltk
 import numpy as np
 from tensorflow.python.keras.models import load_model
+from nltk.sentiment import SentimentIntensityAnalyzer
 
 nltk.download('punkt', quiet=True)
 nltk.download('wordnet', quiet=True)
@@ -59,6 +63,7 @@ class VioletBot(IAssistant):
         self.mood = dict()
         self.original_message = ""
         self.history = smartHistory.SmartHistory(10, model_name)
+        self.sia = SentimentIntensityAnalyzer()
 
         if intents.endswith(".json"):
             self.load_json_intents(intents)
@@ -161,7 +166,7 @@ class VioletBot(IAssistant):
 
         p = self._bag_of_words(sentence, self.words)
         res = self.model.predict(np.array([p]))[0]
-        ERROR_THRESHOLD = 0.95
+        ERROR_THRESHOLD = 0.90
         results = [[i, r] for i, r in enumerate(res) if r > ERROR_THRESHOLD]
 
         results.sort(key=lambda x: x[1], reverse=True)
@@ -180,7 +185,8 @@ class VioletBot(IAssistant):
                 if i['tag'] == tag:
                     if self.mood.get(author) is None:
                         self.mood[author] = Mood(self.model_name, author)
-                    self.mood.get(author).update_mood(i["x_change"], i["y_change"])
+                    mood_change = self._get_mood_change(message)
+                    self.mood.get(author).update_mood(mood_change[0], mood_change[1])
                     mood = self.mood.get(author).get_mood()
                     choice = mood + "_responses"
                     result = random.choice(i[choice])
@@ -224,23 +230,27 @@ class VioletBot(IAssistant):
 
         new_prompt += "\nA:"
 
+        start_time = time.perf_counter()
+
         response = openai.Completion.create(
             engine="text-davinci-002",
             prompt=new_prompt,
             temperature=0,
             max_tokens=100,
             top_p=1,
-            frequency_penalty=0.0,
-            presence_penalty=0.0,
+            frequency_penalty=1.0,
+            presence_penalty=2.0,
             stop=["\n"]
         )
+
+        print('[DEBUG]: Violet Bot requested help from openAI at', datetime.now(), 'With message: "', new_prompt
+              , '". The response took ', math.ceil((time.perf_counter() - start_time) * 1000),
+              "milliseconds to calculate")
 
         result = response['choices'][0]['text']
 
         new_entry = {
             "tag": message,
-            "x_change": 0,
-            "y_change": 0,
             "patterns": [
                 message
             ],
@@ -281,3 +291,24 @@ class VioletBot(IAssistant):
 
     def _store_message(self, username, message):
         self.history.put((username, message))
+
+    def _get_mood_change(self, message):
+        polarity_scores = self.sia.polarity_scores(message)
+        result = [0, 0]
+        for key, val in polarity_scores.items():
+            if key == "pos":
+                result[0] += val
+            if key == "neg":
+                result[0] -= val
+            if key == "compound":
+                result[1] += val
+            if key == "neu":
+                if result[0] > 0:
+                    result[0] -= val
+                elif result[0] < 0:
+                    result[0] += val
+                else:
+                    result[0] = 0
+            result[0] += 0.1
+
+        return result
