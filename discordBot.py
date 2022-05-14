@@ -86,6 +86,9 @@ async def on_message(message):
                 result = '[*ERROR*]: ' + 'bot probably encountered an error, the resulting message is: " ' + result \
                          + ' "'
                 await message.channel.send(result)
+            elif result == " ":
+                result = "[DEBUG]: The bot decided to not respond to the prompt, everything is working correctly"
+                await message.channel.send(result)
             else:
                 await message.channel.send(result)
             print('[DEBUG]: Violet Bot#6492 sent: "', result, '" at', datetime.now(), "The response took ",
@@ -96,7 +99,7 @@ async def on_message(message):
 if __name__ == '__main__':
     #with open('./log.txt', 'w', encoding='utf8') as logfile:
         #sys.stdout = logfile
-    violet = VioletBot('./sources/dev/intents.json', model_name="dev")
+    violet = VioletBot('./sources/dev/intents.json', model_name="dev", history_size=1)
     violet.train_model()
     violet.save_model()
     violet.load_model()

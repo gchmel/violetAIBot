@@ -34,7 +34,6 @@
     "y_change": 1,
     "patterns": [
       "Good day",
-      "violet?",
       "HI!",
       "Hello",
       "Hello!",
@@ -43,6 +42,7 @@
       "How are you",
       "How are you?",
       "Is anyone there?",
+      "Sup, violet!",
       "Wassup",
       "Wassup fellas!",
       "Whats good",
@@ -53,9 +53,9 @@
       "hello, vi!",
       "hi",
       "hi again",
+      "violet?",
       "wassup",
-      "what is up",
-      "Sup, violet!"
+      "what is up"
     ],
     "neutral_responses": [
       "Hello!",
@@ -78,9 +78,7 @@
       "Sup"
     ],
     "angry_responses": [
-      "Hello!",
-      "How are you?",
-      "Sup"
+      "Fuck off"
     ],
     "love_responses": [
       "Hello!",
@@ -96,52 +94,52 @@
   {
     "tag": "response_to_question",
     "patterns": [
+      "Good",
+      "cool",
       "good",
       "nice",
-      "cool",
-      "Good",
       "sure"
     ],
     "neutral_responses": [
       "What do you want to talk about?",
       "Is there something you want to talk about?",
-      "",
+      " ",
       "I'm glad to hear that!"
     ],
     "sad_responses": [
       "What do you want to talk about?",
       "Is there something you want to talk about?",
-      "",
+      " ",
       "I'm glad to hear that!"
     ],
     "happy_responses": [
       "What do you want to talk about?",
       "Is there something you want to talk about?",
-      "",
+      " ",
       "I'm glad to hear that!"
     ],
     "depressed_responses": [
       "What do you want to talk about?",
       "Is there something you want to talk about?",
-      "",
+      " ",
       "I'm glad to hear that!"
     ],
     "angry_responses": [
       "What do you want to talk about?",
       "Is there something you want to talk about?",
-      "",
+      " ",
       "I'm glad to hear that!"
     ],
     "love_responses": [
       "What do you want to talk about?",
       "Is there something you want to talk about?",
-      "",
+      " ",
       "I'm glad to hear that!"
     ],
     "best_friends_responses": [
       "What do you want to talk about?",
       "Is there something you want to talk about?",
-      "",
+      " ",
       "I'm glad to hear that!"
     ]
   },
@@ -154,6 +152,7 @@
       "How are you?",
       "How was your day, V ?",
       "How was your day, V?",
+      "How was your day?",
       "are you alive",
       "how are you doing",
       "how are you?"
@@ -163,22 +162,28 @@
       "Just chilling"
     ],
     "sad_responses": [
-      ""
+      "I'm doing good",
+      "Just chilling"
     ],
     "happy_responses": [
-      ""
+      "I'm doing good",
+      "Just chilling"
     ],
     "depressed_responses": [
-      ""
+      "I'm doing good",
+      "Just chilling"
     ],
     "angry_responses": [
-      ""
+      "I'm doing good",
+      "Just chilling"
     ],
     "love_responses": [
-      ""
+      "I'm doing good",
+      "Just chilling"
     ],
     "best_friends_responses": [
-      ""
+      "I'm doing good",
+      "Just chilling"
     ]
   },
   {
@@ -197,22 +202,28 @@
       "I was born in August 2001"
     ],
     "sad_responses": [
-      ""
+      "I'm doing good",
+      "Just chilling"
     ],
     "happy_responses": [
-      ""
+      "I'm doing good",
+      "Just chilling"
     ],
     "depressed_responses": [
-      ""
+      "I'm doing good",
+      "Just chilling"
     ],
     "angry_responses": [
-      ""
+      "I'm doing good",
+      "Just chilling"
     ],
     "love_responses": [
-      ""
+      "I'm doing good",
+      "Just chilling"
     ],
     "best_friends_responses": [
-      ""
+      "I'm doing good",
+      "Just chilling"
     ]
   },
   {
@@ -234,53 +245,22 @@
       "Goodbye"
     ],
     "sad_responses": [
-      ""
+      "Goodbye"
     ],
     "happy_responses": [
-      ""
+      "Goodbye"
     ],
     "depressed_responses": [
-      ""
+      " "
     ],
     "angry_responses": [
-      ""
+      " "
     ],
     "love_responses": [
-      ""
+      "Goodbye"
     ],
     "best_friends_responses": [
-      ""
-    ]
-  },
-  {
-    "tag": "stocks",
-    "patterns": [
-      "how are my shares?",
-      "how are my stonks",
-      "what am I doing in the markets?",
-      "what companies am I investing in?",
-      "what stocks do I own?"
-    ],
-    "neutral_responses": [
-      "You own the following shares: ABBV, AAPL, FB, NVDA and an ETF of the S&P 500 Index!"
-    ],
-    "sad_responses": [
-      ""
-    ],
-    "happy_responses": [
-      ""
-    ],
-    "depressed_responses": [
-      ""
-    ],
-    "angry_responses": [
-      ""
-    ],
-    "love_responses": [
-      ""
-    ],
-    "best_friends_responses": [
-      ""
+      "Goodbye"
     ]
   },
   {
@@ -293,25 +273,26 @@
     "neutral_responses": [
       "I don't follow politics",
       "I'm not interested in politics",
-      "I don't want to discuss politics"
+      "I don't want to discuss politics",
+      " "
     ],
     "sad_responses": [
-      ""
+      " "
     ],
     "happy_responses": [
-      ""
+      " "
     ],
     "depressed_responses": [
-      ""
+      " "
     ],
     "angry_responses": [
-      ""
+      " "
     ],
     "love_responses": [
-      ""
+      " "
     ],
     "best_friends_responses": [
-      ""
+      " "
     ]
   },
   {
@@ -322,29 +303,40 @@
       "omegalul",
       "pepega",
       "poggers",
-      "ez"
+      "ez",
+      "KEKW",
+      "pog",
+      "esports",
+      "sadge",
+      "pepega"
     ],
     "neutral_responses": [
       ":OMEGALUL:",
       ":pepega:"
     ],
     "sad_responses": [
-      ""
+      ":OMEGALUL:",
+      ":pepega:"
     ],
     "happy_responses": [
-      ""
+      ":OMEGALUL:",
+      ":pepega:"
     ],
     "depressed_responses": [
-      ""
+      ":OMEGALUL:",
+      ":pepega:"
     ],
     "angry_responses": [
-      ""
+      ":OMEGALUL:",
+      ":pepega:"
     ],
     "love_responses": [
-      ""
+      ":OMEGALUL:",
+      ":pepega:"
     ],
     "best_friends_responses": [
-      ""
+      ":OMEGALUL:",
+      ":pepega:"
     ]
   },
   {
@@ -356,22 +348,22 @@
       "The Capital of France is Paris"
     ],
     "sad_responses": [
-      ""
+      "The Capital of France is Paris"
     ],
     "happy_responses": [
-      ""
+      "The Capital of France is Paris"
     ],
     "depressed_responses": [
-      ""
+      "The Capital of France is Paris"
     ],
     "angry_responses": [
-      ""
+      "The Capital of France is Paris"
     ],
     "love_responses": [
-      ""
+      "The Capital of France is Paris"
     ],
     "best_friends_responses": [
-      ""
+      "The Capital of France is Paris"
     ]
   },
   {
@@ -495,25 +487,25 @@
       "anything new in life?"
     ],
     "neutral_responses": [
-      " Unknown"
+      "I found out how to use Google yesterday"
     ],
     "sad_responses": [
-      " Unknown"
+      "I found out how to use Google yesterday"
     ],
     "happy_responses": [
-      " Unknown"
+      "I found out how to use Google yesterday"
     ],
     "depressed_responses": [
-      " Unknown"
+      "I found out how to use Google yesterday"
     ],
     "angry_responses": [
-      " Unknown"
+      "I found out how to use Google yesterday"
     ],
     "love_responses": [
-      " Unknown"
+      "My love for you"
     ],
     "best_friends_responses": [
-      " Unknown"
+      "I found out how to use Google yesterday"
     ]
   },
   {
@@ -522,25 +514,25 @@
       "bot detected"
     ],
     "neutral_responses": [
-      " Unknown"
+      "No, you are a bot, I am a meta-human intelligence"
     ],
     "sad_responses": [
-      " Unknown"
+      "No, you are a bot, I am a meta-human intelligence"
     ],
     "happy_responses": [
-      " Unknown"
+      "No, you are a bot, I am a meta-human intelligence"
     ],
     "depressed_responses": [
-      " Unknown"
+      "No, you are a bot, I am a meta-human intelligence"
     ],
     "angry_responses": [
-      " Unknown"
+      "Fuck off"
     ],
     "love_responses": [
-      " Unknown"
+      "No, you are a bot, I am a meta-human intelligence"
     ],
     "best_friends_responses": [
-      " Unknown"
+      "No, you are a bot, I am a meta-human intelligence"
     ]
   }
 ]

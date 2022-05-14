@@ -55,14 +55,14 @@ class IAssistant(metaclass=ABCMeta):
 
 class VioletBot(IAssistant):
 
-    def __init__(self, intents, intent_methods={}, model_name="assistant_model"):
+    def __init__(self, intents, intent_methods={}, model_name="assistant_model", history_size=10):
         self.intents = intents
         self.intents_file = intents
         self.intent_methods = intent_methods
         self.model_name = model_name
         self.mood = dict()
         self.original_message = ""
-        self.history = smartHistory.SmartHistory(10, model_name)
+        self.history = smartHistory.SmartHistory(history_size, model_name)
         self.sia = SentimentIntensityAnalyzer()
 
         if intents.endswith(".json"):
@@ -73,20 +73,25 @@ class VioletBot(IAssistant):
     def load_json_intents(self, intents):
         self.intents = json.loads(open(intents).read())
 
+    def get_feelings(self, person):
+        return self.mood.get(person).get_mood()
+
     def train_model(self):
         self.load_json_intents(self.intents_file)
         self.words = []
         self.classes = []
         documents = []
-        ignore_letters = ['!', '?', ',', '.']
+        ignore_letters = []
 
-        for intent in self.intents:
+        intents_length = len(self.intents)
+        for i, intent in enumerate(self.intents):
             for pattern in intent['patterns']:
                 word = nltk.word_tokenize(pattern)
                 self.words.extend(word)
                 documents.append((word, intent['tag']))
                 if intent['tag'] not in self.classes:
                     self.classes.append(intent['tag'])
+            #print(f'[DEBUG]: Broke down into words {i} intent out of {intents_length}')
 
         self.words = [self.lemmatizer.lemmatize(w.lower()) for w in self.words if w not in ignore_letters]
         self.words = sorted(list(set(self.words)))
@@ -118,14 +123,12 @@ class VioletBot(IAssistant):
         self.model.add(Dropout(0.5))
         self.model.add(Dense(64, activation='relu'))
         self.model.add(Dropout(0.5))
-        self.model.add(Dense(64, activation='relu'))
-        self.model.add(Dropout(0.5))
         self.model.add(Dense(len(train_y[0]), activation='softmax'))
 
         sgd = SGD(lr=0.01, decay=1e-6, momentum=0.9, nesterov=True)
         self.model.compile(loss='categorical_crossentropy', optimizer=sgd, metrics=['accuracy'])
 
-        self.hist = self.model.fit(np.array(train_x), np.array(train_y), epochs=200, batch_size=5, verbose=1)
+        self.hist = self.model.fit(np.array(train_x), np.array(train_y), epochs=100, batch_size=5, verbose=1)
 
     def save_model(self, model_name=None):
         if model_name is None:
@@ -166,7 +169,7 @@ class VioletBot(IAssistant):
 
         p = self._bag_of_words(sentence, self.words)
         res = self.model.predict(np.array([p]))[0]
-        ERROR_THRESHOLD = 0.90
+        ERROR_THRESHOLD = 0.5
         results = [[i, r] for i, r in enumerate(res) if r > ERROR_THRESHOLD]
 
         results.sort(key=lambda x: x[1], reverse=True)
@@ -197,6 +200,47 @@ class VioletBot(IAssistant):
         self.history.put(('bot', result))
         return result
 
+    def learn_new_tag(self, intents_json, message, tag, answer):
+        new_entry = {
+            "tag": tag,
+            "patterns": [
+                message
+            ],
+            "neutral_responses": [answer],
+            "sad_responses": [answer],
+            "happy_responses": [answer],
+            "depressed_responses": [answer],
+            "angry_responses": [answer],
+            "love_responses": [answer],
+            "best_friends_responses": [answer],
+        }
+        intents_json.append(new_entry)
+        json.dump(intents_json, open(f'./sources/{self.model_name}/intents.json', 'r+'), indent=2)
+
+    def _get_response_with_answer(self, author, ints, intents_json, message, answer):
+        try:
+            tag = ints[0]['intent']
+            if tag == "i_dont_understand":
+                self.learn_new_tag(intents_json, message, message, answer)
+                return
+            list_of_intents = intents_json
+            for i in list_of_intents:
+                if i['tag'] == tag:
+                    if self.mood.get(author) is None:
+                        self.mood[author] = Mood(self.model_name, author)
+                    mood_change = self._get_mood_change(message)
+                    self.mood.get(author).update_mood(mood_change[0], mood_change[1])
+                    mood = self.mood.get(author).get_mood()
+                    choice = mood + "_responses"
+                    result = random.choice(i[choice])
+                    break
+            self.learn_new_input_and_answer(message, tag, answer)
+            self.log_to_conversation(f"{result}, from tag: {tag}")
+        except IndexError:
+            result = "I don't understand!"
+        self.history.put(('bot', result))
+        print("learned_new_input: ", message, "for tag", )
+
     def learn_new_input(self, message, tag):
         with open(f'./sources/{self.model_name}/intents.json', 'r+') as f:
             data = json.load(f)
@@ -209,6 +253,28 @@ class VioletBot(IAssistant):
                     f.seek(0)
                     json.dump(data, f, indent=2)
                     f.truncate()
+                    break
+
+    def learn_new_input_and_answer(self, message, tag, answer):
+        with open(f'./sources/{self.model_name}/intents.json', 'r+') as f:
+            fields_to_edit = ['neutral_responses', "sad_responses", "happy_responses", 'depressed_responses',
+                       'angry_responses', 'love_responses', 'best_friends_responses']
+            data = json.load(f)
+            for j in data:
+                if j['tag'] == tag:
+
+                    dictionary = j['patterns']
+                    dictionary.append(message)
+                    dictionary = sorted(list(set(dictionary)))
+                    j['patterns'] = dictionary
+
+                    for field in fields_to_edit:
+                        dictionary = j[field]
+                        dictionary.append(answer)
+                        dictionary = sorted(list(set(dictionary)))
+                        j[field] = dictionary
+                    f.seek(0)
+                    json.dump(data, f, indent=2)
                     break
 
     def _learn_from_new_type(self, intents_json, message):
@@ -289,8 +355,23 @@ class VioletBot(IAssistant):
         else:
             return self._get_response(author, ints, self.intents, self.original_message)
 
+    def train_with_prompts(self, message, correct_answer):
+        self.log_to_conversation(f"\n {message}")
+        self._store_message("training", message)
+        ints = self._predict_class(message)
+
+        if len(ints) == 0:
+            self.learn_new_tag(self.intents, message, message, correct_answer)
+        else:
+            self._get_response_with_answer("training", ints, self.intents, self.original_message, correct_answer)
+
     def _store_message(self, username, message):
         self.history.put((username, message))
+
+    def log_to_conversation(self, message):
+        with open(f"sources/{self.model_name}/log_conversation.txt", "a") as f:
+            f.write(f"{message} \n")
+
 
     def _get_mood_change(self, message):
         polarity_scores = self.sia.polarity_scores(message)
@@ -303,12 +384,6 @@ class VioletBot(IAssistant):
             if key == "compound":
                 result[1] += val
             if key == "neu":
-                if result[0] > 0:
-                    result[0] -= val
-                elif result[0] < 0:
-                    result[0] += val
-                else:
-                    result[0] = 0
-            result[0] += 0.1
+                result[0] += math.sqrt(val)
 
         return result

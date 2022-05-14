@@ -1,46 +1,10 @@
 {
-  "max_size": 10,
-  "size": 10,
+  "max_size": 1,
+  "size": 1,
   "history": [
     [
       "bot",
-      " Unknown"
-    ],
-    [
-      "bot",
-      " Unknown"
-    ],
-    [
-      "WHATISLOVE",
-      "Hello, Vi!"
-    ],
-    [
-      "bot",
-      "Command not recognized, use !v help to get the list of valid commands"
-    ],
-    [
-      "WHATISLOVE",
-      "Hello, v!"
-    ],
-    [
-      "WHATISLOVE",
-      "Vi, tell me a joke"
-    ],
-    [
-      "bot",
-      "I'm glad to hear that!"
-    ],
-    [
-      "WHATISLOVE",
-      "Hi, V!"
-    ],
-    [
-      "bot",
-      "How are you?"
-    ],
-    [
-      "WHATISLOVE",
-      "good, how was your day"
+      ""
     ]
   ]
 }
