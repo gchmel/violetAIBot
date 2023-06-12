@@ -39,6 +39,7 @@
       "Hello!",
       "Hey",
       "Hi",
+      "Hi!",
       "How are you",
       "How are you?",
       "Is anyone there?",
@@ -95,6 +96,7 @@
     "tag": "response_to_question",
     "patterns": [
       "Good",
+      "bruh",
       "cool",
       "good",
       "nice",
@@ -149,6 +151,7 @@
       "Are you alive?",
       "Can you describe how your day was, V?",
       "How are you",
+      "How are you doing?",
       "How are you?",
       "How was your day, V ?",
       "How was your day, V?",
@@ -299,6 +302,7 @@
     "tag": "emoji_talk",
     "patterns": [
       "kekwiggle",
+      "bruh",
       "kkona",
       "omegalul",
       "pepega",
@@ -484,7 +488,8 @@
   {
     "tag": "ask_a_fact_about_bot",
     "patterns": [
-      "anything new in life?"
+      "anything new in life?",
+      "tell me a fact about yourself"
     ],
     "neutral_responses": [
       "I found out how to use Google yesterday"
@@ -533,6 +538,370 @@
     ],
     "best_friends_responses": [
       "No, you are a bot, I am a meta-human intelligence"
+    ]
+  },
+  {
+    "tag": "tell_a_random_fact",
+    "patterns": [
+      "Do you know any fun facts?"
+    ],
+    "neutral_responses": [
+      "Google (Alphabet Inc) is one of the Biggest tech conglomerates with market capitalization of over $1.5T",
+      "While most turtles live from 10 to 80 years, sea turtles can live for up to 150 years or longer"
+    ],
+    "sad_responses": [
+      "Google (Alphabet Inc) is one of the Biggest tech conglomerates with market capitalization of over $1.5T",
+      "While most turtles live from 10 to 80 years, sea turtles can live for up to 150 years or longer"
+    ],
+    "happy_responses": [
+      "Google (Alphabet Inc) is one of the Biggest tech conglomerates with market capitalization of over $1.5T",
+      "While most turtles live from 10 to 80 years, sea turtles can live for up to 150 years or longer"
+    ],
+    "depressed_responses": [
+      "Google (Alphabet Inc) is one of the Biggest tech conglomerates with market capitalization of over $1.5T",
+      "While most turtles live from 10 to 80 years, sea turtles can live for up to 150 years or longer"
+    ],
+    "angry_responses": [
+      "Google (Alphabet Inc) is one of the Biggest tech conglomerates with market capitalization of over $1.5T",
+      "While most turtles live from 10 to 80 years, sea turtles can live for up to 150 years or longer"
+    ],
+    "love_responses": [
+      "Google (Alphabet Inc) is one of the Biggest tech conglomerates with market capitalization of over $1.5T",
+      "While most turtles live from 10 to 80 years, sea turtles can live for up to 150 years or longer"
+    ],
+    "best_friends_responses": [
+      "Google (Alphabet Inc) is one of the Biggest tech conglomerates with market capitalization of over $1.5T",
+      "While most turtles live from 10 to 80 years, sea turtles can live for up to 150 years or longer"
+    ]
+  },
+  {
+    "tag": "fuck off",
+    "patterns": [
+      "fuck off",
+      "blyat violeta"
+    ],
+    "neutral_responses": [
+      "fuck you"
+    ],
+    "sad_responses": [
+      "fuck you"
+    ],
+    "happy_responses": [
+      "fuck you"
+    ],
+    "depressed_responses": [
+      "fuck you"
+    ],
+    "angry_responses": [
+      "fuck you"
+    ],
+    "love_responses": [
+      "fuck you"
+    ],
+    "best_friends_responses": [
+      "fuck you"
+    ]
+  },
+  {
+    "tag": "fact_about_dark_souls",
+    "patterns": [
+      "Lets talk about Dark Souls",
+      "Do you know what Dark Souls is",
+      "Do you know the game called Dark Souls",
+      "Have you heard of dark Souls",
+      "Dark souls",
+      "ds1",
+      "darksouls",
+      "what is darksouls"
+    ],
+    "neutral_responses": [
+      "Dark Souls is a 2011 rpg that is famous for its deep and difficult combat, intricate level design and rich lore"
+    ],
+    "sad_responses": [
+      "Dark Souls is a 2011 rpg that is famous for its deep and difficult combat, intricate level design and rich lore"
+    ],
+    "happy_responses": [
+      "Dark Souls is a 2011 rpg that is famous for its deep and difficult combat, intricate level design and rich lore"
+    ],
+    "depressed_responses": [
+      "Dark Souls is a 2011 rpg that is famous for its deep and difficult combat, intricate level design and rich lore"
+    ],
+    "angry_responses": [
+      "Dark Souls is a 2011 rpg that is famous for its deep and difficult combat, intricate level design and rich lore"
+    ],
+    "love_responses": [
+      "Dark Souls is a 2011 rpg that is famous for its deep and difficult combat, intricate level design and rich lore"
+    ],
+    "best_friends_responses": [
+      "Dark Souls is a 2011 rpg that is famous for its deep and difficult combat, intricate level design and rich lore"
+    ]
+  },
+  {
+    "tag": "fact_about_dark_souls_lore",
+    "patterns": [
+      "Lets talk about Dark Souls lore",
+      "Where does dark souls happen",
+      "dark souls lore",
+      "Dark souls",
+      "ds1",
+      "darksouls",
+      "what is darksouls",
+      "tell me more about Dark souls"
+    ],
+    "neutral_responses": [
+      "Dark Souls takes place in the kingdom of Lordran, where players assume the role of a cursed undead character who begins a pilgrimage to discover the fate of their kind"
+    ],
+    "sad_responses": [
+      "Dark Souls takes place in the kingdom of Lordran, where players assume the role of a cursed undead character who begins a pilgrimage to discover the fate of their kind"
+    ],
+    "happy_responses": [
+      "Dark Souls takes place in the kingdom of Lordran, where players assume the role of a cursed undead character who begins a pilgrimage to discover the fate of their kind"
+    ],
+    "depressed_responses": [
+      "Dark Souls takes place in the kingdom of Lordran, where players assume the role of a cursed undead character who begins a pilgrimage to discover the fate of their kind"
+    ],
+    "angry_responses": [
+      "Dark Souls takes place in the kingdom of Lordran, where players assume the role of a cursed undead character who begins a pilgrimage to discover the fate of their kind"
+    ],
+    "love_responses": [
+      "Dark Souls takes place in the kingdom of Lordran, where players assume the role of a cursed undead character who begins a pilgrimage to discover the fate of their kind"
+    ],
+    "best_friends_responses": [
+      "Dark Souls takes place in the kingdom of Lordran, where players assume the role of a cursed undead character who begins a pilgrimage to discover the fate of their kind"
+    ]
+  },
+  {
+    "tag": "fact_about_google",
+    "patterns": [
+      "tell me more about google",
+      "what is google"
+    ],
+    "neutral_responses": [
+      "Google is a multinational tech corporation that is famous for the most popular search engine with the same name and the most widespread browser Google Chrome"
+    ],
+    "sad_responses": [
+      "Google is a multinational tech corporation that is famous for the most popular search engine with the same name and the most widespread browser Google Chrome"
+    ],
+    "happy_responses": [
+      "Google is a multinational tech corporation that is famous for the most popular search engine with the same name and the most widespread browser Google Chrome"
+    ],
+    "depressed_responses": [
+      "Google is a multinational tech corporation that is famous for the most popular search engine with the same name and the most widespread browser Google Chrome"
+    ],
+    "angry_responses": [
+      "Google is a multinational tech corporation that is famous for the most popular search engine with the same name and the most widespread browser Google Chrome"
+    ],
+    "love_responses": [
+      "Google is a multinational tech corporation that is famous for the most popular search engine with the same name and the most widespread browser Google Chrome"
+    ],
+    "best_friends_responses": [
+      "Google is a multinational tech corporation that is famous for the most popular search engine with the same name and the most widespread browser Google Chrome"
+    ]
+  },
+  {
+    "tag": "what is Lordran",
+    "patterns": [
+      "what is Lordran",
+      "Lordran",
+      "tell me a story from dark souls"
+    ],
+    "neutral_responses": [
+      "Lordran is the land of the ancient lords and was once home to Gwyn, the Lord of Sunlight, Nito, the First of the Dead, The Witch of Izalith, Seath the Scaleless, and their many brethren and faithful servants."
+    ],
+    "sad_responses": [
+      "Lordran is the land of the ancient lords and was once home to Gwyn, the Lord of Sunlight, Nito, the First of the Dead, The Witch of Izalith, Seath the Scaleless, and their many brethren and faithful servants."
+    ],
+    "happy_responses": [
+      "Lordran is the land of the ancient lords and was once home to Gwyn, the Lord of Sunlight, Nito, the First of the Dead, The Witch of Izalith, Seath the Scaleless, and their many brethren and faithful servants."
+    ],
+    "depressed_responses": [
+      "Lordran is the land of the ancient lords and was once home to Gwyn, the Lord of Sunlight, Nito, the First of the Dead, The Witch of Izalith, Seath the Scaleless, and their many brethren and faithful servants."
+    ],
+    "angry_responses": [
+      "Lordran is the land of the ancient lords and was once home to Gwyn, the Lord of Sunlight, Nito, the First of the Dead, The Witch of Izalith, Seath the Scaleless, and their many brethren and faithful servants."
+    ],
+    "love_responses": [
+      "Lordran is the land of the ancient lords and was once home to Gwyn, the Lord of Sunlight, Nito, the First of the Dead, The Witch of Izalith, Seath the Scaleless, and their many brethren and faithful servants."
+    ],
+    "best_friends_responses": [
+      "Lordran is the land of the ancient lords and was once home to Gwyn, the Lord of Sunlight, Nito, the First of the Dead, The Witch of Izalith, Seath the Scaleless, and their many brethren and faithful servants."
+    ]
+  },
+  {
+    "tag": "false_warp_ds",
+    "patterns": [
+      "what is false warp in ds1",
+      "false warp",
+      "false warp darksouls",
+      "wrong warp",
+      "wrong warp darksouls",
+      "wrong warp dark souls"
+    ],
+    "neutral_responses": [
+      "The Wrong Warp is a glitch in Dark Souls that allows you to warp to a different location than normally possible, usually to the \"default\", fail-safe, location of an area"
+    ],
+    "sad_responses": [
+      "The Wrong Warp is a glitch in Dark Souls that allows you to warp to a different location than normally possible, usually to the \"default\", fail-safe, location of an area"
+    ],
+    "happy_responses": [
+      "The Wrong Warp is a glitch in Dark Souls that allows you to warp to a different location than normally possible, usually to the \"default\", fail-safe, location of an area"
+    ],
+    "depressed_responses": [
+      "The Wrong Warp is a glitch in Dark Souls that allows you to warp to a different location than normally possible, usually to the \"default\", fail-safe, location of an area"
+    ],
+    "angry_responses": [
+      "The Wrong Warp is a glitch in Dark Souls that allows you to warp to a different location than normally possible, usually to the \"default\", fail-safe, location of an area"
+    ],
+    "love_responses": [
+      "The Wrong Warp is a glitch in Dark Souls that allows you to warp to a different location than normally possible, usually to the \"default\", fail-safe, location of an area"
+    ],
+    "best_friends_responses": [
+      "The Wrong Warp is a glitch in Dark Souls that allows you to warp to a different location than normally possible, usually to the \"default\", fail-safe, location of an area"
+    ]
+  },
+  {
+    "tag": "dark_souls_boss",
+    "patterns": [
+      "what is your favourite dark souls boss?",
+      "do you know any bosses from darksouls",
+      "who was the hardest dark souls boss"
+    ],
+    "neutral_responses": [
+      "Gwyn, The Lord of Cinder, is the final boss of Dark Souls. He is the father of Gwynevere and Gwyndolin. This final boss is located at the Kiln of the First Flame."
+    ],
+    "sad_responses": [
+      "Gwyn, The Lord of Cinder, is the final boss of Dark Souls. He is the father of Gwynevere and Gwyndolin. This final boss is located at the Kiln of the First Flame."
+    ],
+    "happy_responses": [
+      "Gwyn, The Lord of Cinder, is the final boss of Dark Souls. He is the father of Gwynevere and Gwyndolin. This final boss is located at the Kiln of the First Flame."
+    ],
+    "depressed_responses": [
+      "Gwyn, The Lord of Cinder, is the final boss of Dark Souls. He is the father of Gwynevere and Gwyndolin. This final boss is located at the Kiln of the First Flame."
+    ],
+    "angry_responses": [
+      "Gwyn, The Lord of Cinder, is the final boss of Dark Souls. He is the father of Gwynevere and Gwyndolin. This final boss is located at the Kiln of the First Flame."
+    ],
+    "love_responses": [
+      "Gwyn, The Lord of Cinder, is the final boss of Dark Souls. He is the father of Gwynevere and Gwyndolin. This final boss is located at the Kiln of the First Flame."
+    ],
+    "best_friends_responses": [
+      "Gwyn, The Lord of Cinder, is the final boss of Dark Souls. He is the father of Gwynevere and Gwyndolin. This final boss is located at the Kiln of the First Flame."
+    ]
+  },
+  {
+    "tag": "dark_souls_class",
+    "patterns": [
+      "what is your favourite class in dark souls",
+      "do you know any classes from darksouls",
+      "what class would you want to play",
+      "Warrior",
+      "Knight",
+      "Bandit",
+      "wanderer",
+      "Sorcerer",
+      "Hunter"
+    ],
+    "neutral_responses": [
+      "Sorcerers use magic and rely on high intelligence and attunement."
+    ],
+    "sad_responses": [
+      "Sorcerers use magic and rely on high intelligence and attunement."
+    ],
+    "happy_responses": [
+      "Sorcerers use magic and rely on high intelligence and attunement."
+    ],
+    "depressed_responses": [
+      "Sorcerers use magic and rely on high intelligence and attunement."
+    ],
+    "angry_responses": [
+      "Sorcerers use magic and rely on high intelligence and attunement."
+    ],
+    "love_responses": [
+      "Sorcerers use magic and rely on high intelligence and attunement."
+    ],
+    "best_friends_responses": [
+      "Sorcerers use magic and rely on high intelligence and attunement."
+    ]
+  },
+  {
+    "tag": "Viloet?",
+    "patterns": [
+      "Viloet?"
+    ],
+    "neutral_responses": [
+      " Unknown"
+    ],
+    "sad_responses": [
+      " Unknown"
+    ],
+    "happy_responses": [
+      " Unknown"
+    ],
+    "depressed_responses": [
+      " Unknown"
+    ],
+    "angry_responses": [
+      " Unknown"
+    ],
+    "love_responses": [
+      " Unknown"
+    ],
+    "best_friends_responses": [
+      " Unknown"
+    ]
+  },
+  {
+    "tag": "Violet, give me a random fact",
+    "patterns": [
+      "Violet, give me a random fact"
+    ],
+    "neutral_responses": [
+      " Unknown"
+    ],
+    "sad_responses": [
+      " Unknown"
+    ],
+    "happy_responses": [
+      " Unknown"
+    ],
+    "depressed_responses": [
+      " Unknown"
+    ],
+    "angry_responses": [
+      " Unknown"
+    ],
+    "love_responses": [
+      " Unknown"
+    ],
+    "best_friends_responses": [
+      " Unknown"
+    ]
+  },
+  {
+    "tag": "Violet, what is your favourite color",
+    "patterns": [
+      "Violet, what is your favourite color"
+    ],
+    "neutral_responses": [
+      " Unknown"
+    ],
+    "sad_responses": [
+      " Unknown"
+    ],
+    "happy_responses": [
+      " Unknown"
+    ],
+    "depressed_responses": [
+      " Unknown"
+    ],
+    "angry_responses": [
+      " Unknown"
+    ],
+    "love_responses": [
+      " Unknown"
+    ],
+    "best_friends_responses": [
+      " Unknown"
     ]
   }
 ]

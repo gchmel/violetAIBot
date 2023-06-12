@@ -169,7 +169,7 @@ class VioletBot(IAssistant):
 
         p = self._bag_of_words(sentence, self.words)
         res = self.model.predict(np.array([p]))[0]
-        ERROR_THRESHOLD = 0.5
+        ERROR_THRESHOLD = 0.8
         results = [[i, r] for i, r in enumerate(res) if r > ERROR_THRESHOLD]
 
         results.sort(key=lambda x: x[1], reverse=True)
@@ -384,6 +384,6 @@ class VioletBot(IAssistant):
             if key == "compound":
                 result[1] += val
             if key == "neu":
-                result[0] += math.sqrt(val)
+                result[0] += val / 10
 
         return result
